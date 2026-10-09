@@ -1,0 +1,25 @@
+{
+  "schemaVersion": "2.0",
+  "namespace": "ps",
+  "version": "0.1.0",
+  "runtimeVersion": "0.7.14",
+  "skills": {
+    "ps": "0.5.7",
+    "ps-data-refresh": "0.5.1",
+    "ps-investigate": "0.5.3",
+    "ps-issues": "0.5.1",
+    "ps-timeline": "0.5.1",
+    "ps-update": "0.7.2",
+    "ps-version": "0.7.1"
+  },
+  "automations": {
+    "ps-data-refresh": "0.4.0"
+  },
+  "extensions": {
+    "ps-runtime": "0.3.4"
+  },
+  "agents": {
+    "ps-analyst": "0.1.0",
+    "ps-challenger": "0.1.0"
+  }
+}

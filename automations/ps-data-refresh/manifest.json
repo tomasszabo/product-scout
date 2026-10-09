@@ -1,0 +1,30 @@
+{
+  "schemaVersion": "1.0",
+  "namespace": "ps",
+  "name": "ps-data-refresh",
+  "version": "0.4.0",
+  "pipelineVersion": "0.1.0",
+  "entrypoint": "SKILL.md",
+  "skill": "skills/ps-data-refresh/SKILL.md",
+  "enabledByDefault": false,
+  "importOnSetup": true,
+  "prompt": "/ps-data-refresh Refresh all configured products' sample dates once. Preserve fictional provenance, relative windows, release dates and reviewed history. Skip live-bound products. Do not query sources or invoke investigation agents.",
+  "scheduling": {
+    "owner": "host",
+    "registrationRequired": true,
+    "trigger": "daily",
+    "intervalHours": 24,
+    "execution": "local",
+    "overlapPolicy": "skip"
+  },
+  "inputs": {
+    "scope": "all"
+  },
+  "permissions": {
+    "github": "none",
+    "localSnapshotIngest": false,
+    "fixtureDateRefresh": true,
+    "timelineApproval": false,
+    "githubWrites": false
+  }
+}

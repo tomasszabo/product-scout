@@ -1,0 +1,152 @@
+{
+  "schemaVersion": "1.0",
+  "pipelineVersion": "0.1.0",
+  "productId": "contoso-crm",
+  "mode": "fixture",
+  "fetchedAt": "2026-09-24T06:00:00Z",
+  "sourceUrls": { "confluence": null, "applicationInsights": null },
+  "stories": [
+    {
+      "localKey": "sample-contoso-onboarding",
+      "title": "Complete guided customer onboarding",
+      "outcome": "Account teams can finish setup with clear progress and recover from interrupted steps.",
+      "status": "in-progress",
+      "acceptance": "defined",
+      "decision": null,
+      "owner": "Onboarding product owner"
+    },
+    {
+      "localKey": "sample-contoso-contact-import",
+      "title": "Preview contacts before an import",
+      "outcome": "Account teams can review validation errors before adding customer contacts.",
+      "status": "accepted",
+      "acceptance": "defined",
+      "decision": null,
+      "owner": "Contact management product owner"
+    },
+    {
+      "localKey": "sample-contoso-contact-search",
+      "title": "Find a customer contact quickly",
+      "outcome": "Account teams can search by name and email and distinguish matching contacts.",
+      "status": "accepted",
+      "acceptance": "defined",
+      "decision": null,
+      "owner": "Search product owner"
+    },
+    {
+      "localKey": "sample-contoso-retention-alert",
+      "title": "Review customer retention follow-ups",
+      "outcome": "Account teams can identify overdue customer follow-ups and agree a next action.",
+      "status": "in-progress",
+      "acceptance": "missing",
+      "decision": "Product owner to choose whether retention follow-ups cover all accounts or an initial opt-in cohort.",
+      "owner": "Customer retention product owner"
+    },
+    {
+      "localKey": "sample-contoso-import-duplicates",
+      "title": "Resolve duplicate contacts during import",
+      "outcome": "Account teams can keep the intended customer contact without discarding useful details.",
+      "status": "draft",
+      "acceptance": "missing",
+      "decision": "Product owner to decide whether duplicate handling is review-only or includes a human-confirmed merge.",
+      "owner": "Contact management product owner"
+    },
+    {
+      "localKey": "sample-contoso-onboarding-checklist",
+      "title": "See the onboarding checklist",
+      "outcome": "New account teams can see completed setup steps and the work still required.",
+      "status": "accepted",
+      "acceptance": "defined",
+      "decision": null,
+      "owner": "Onboarding product owner"
+    },
+    {
+      "localKey": "sample-contoso-retention-notes",
+      "title": "Capture a customer retention conversation",
+      "outcome": "Account teams can record customer concerns and assign a next follow-up.",
+      "status": "draft",
+      "acceptance": "defined",
+      "decision": null,
+      "owner": "Customer retention product owner"
+    }
+  ],
+  "monitoring": {
+    "window": { "start": "2026-09-23T06:00:00Z", "end": "2026-09-24T06:00:00Z" },
+    "baselineWindow": { "start": "2026-09-22T06:00:00Z", "end": "2026-09-23T06:00:00Z" },
+    "journeys": [
+      { "localKey": "sample-contoso-journey-onboarding", "name": "Customer onboarding completion", "attempts": 400, "successes": 360, "affectedUsers": 30, "p95Ms": 3000, "baselineAttempts": 400, "baselineSuccesses": 380, "baselineP95Ms": 2000, "targetSuccessRate": 97, "targetP95Ms": 2500 },
+      { "localKey": "sample-contoso-journey-import", "name": "Contact import completion", "attempts": 200, "successes": 190, "affectedUsers": 8, "p95Ms": 2000, "baselineAttempts": 200, "baselineSuccesses": 180, "baselineP95Ms": 2500, "targetSuccessRate": 94, "targetP95Ms": 2200 },
+      { "localKey": "sample-contoso-journey-search", "name": "Contact search", "attempts": 1000, "successes": 990, "affectedUsers": 6, "p95Ms": 500, "baselineAttempts": 1000, "baselineSuccesses": 980, "baselineP95Ms": 800, "targetSuccessRate": 98, "targetP95Ms": 1000 },
+      { "localKey": "sample-contoso-journey-retention", "name": "Customer retention follow-up", "attempts": 500, "successes": 475, "affectedUsers": 20, "p95Ms": 1500, "baselineAttempts": 500, "baselineSuccesses": 490, "baselineP95Ms": 1000, "targetSuccessRate": 98, "targetP95Ms": 1200 }
+    ]
+  },
+  "appMonitoring": {
+    "availability": { "state": "outage", "environment": "production", "observedAt": "2026-09-24T05:57:00Z", "summary": "Simulated production outage: Contoso CRM contact workspaces and onboarding are unavailable in this fictional observation. Window-wide request and log metrics are independent historical samples." },
+    "window": { "start": "2026-09-23T06:00:00Z", "end": "2026-09-24T06:00:00Z" },
+    "baselineWindow": { "start": "2026-09-22T06:00:00Z", "end": "2026-09-23T06:00:00Z" },
+    "requests": { "total": 8000, "failed": 160, "p95Ms": 1500, "baselineTotal": 8000, "baselineFailed": 240, "baselineP95Ms": 2000, "targetP95Ms": 1400 },
+    "operations": [
+      { "localKey": "sample-contoso-app-onboarding", "name": "Save onboarding progress", "requests": 2000, "failed": 80, "p95Ms": 2500, "targetP95Ms": 2000 },
+      { "localKey": "sample-contoso-app-import", "name": "Validate contact import", "requests": 1500, "failed": 50, "p95Ms": 1600, "targetP95Ms": 1800 },
+      { "localKey": "sample-contoso-app-search", "name": "Query contact index", "requests": 2500, "failed": 10, "p95Ms": 400, "targetP95Ms": 600 },
+      { "localKey": "sample-contoso-app-retention", "name": "Load retention follow-ups", "requests": 1000, "failed": 15, "p95Ms": 1200, "targetP95Ms": 1000 }
+    ],
+    "logs": [
+      { "localKey": "sample-contoso-log-onboarding-recovery", "timestamp": "2026-09-24T05:40:00Z", "severity": "information", "kind": "trace", "operation": "Save onboarding progress", "message": "Synthetic retry observation: onboarding progress was saved after a transient failure.", "occurrences": 25 },
+      { "localKey": "sample-contoso-log-onboarding-error", "timestamp": "2026-09-24T02:10:00Z", "severity": "error", "kind": "exception", "operation": "Save onboarding progress", "message": "Synthetic exception observation: onboarding progress could not be saved.", "occurrences": 35 },
+      { "localKey": "sample-contoso-log-retention-warning", "timestamp": "2026-09-24T05:20:00Z", "severity": "warning", "kind": "dependency", "operation": "Load retention follow-ups", "message": "Synthetic dependency observation: follow-up lookup used a delayed response.", "occurrences": 40 },
+      { "localKey": "sample-contoso-log-import-error", "timestamp": "2026-09-24T04:00:00Z", "severity": "error", "kind": "exception", "operation": "Validate contact import", "message": "Synthetic exception observation: contact import validation stopped before completion.", "occurrences": 20 },
+      { "localKey": "sample-contoso-log-import-warning", "timestamp": "2026-09-24T03:40:00Z", "severity": "warning", "kind": "trace", "operation": "Validate contact import", "message": "Synthetic validation observation: contact rows required manual review.", "occurrences": 60 },
+      { "localKey": "sample-contoso-log-search-recovery", "timestamp": "2026-09-24T05:50:00Z", "severity": "information", "kind": "trace", "operation": "Query contact index", "message": "Synthetic recovery observation: contact search latency returned to its expected range.", "occurrences": 100 }
+    ]
+  },
+  "adoption": {
+    "window": { "start": "2026-09-17T06:00:00Z", "end": "2026-09-24T06:00:00Z" },
+    "baselineWindow": { "start": "2026-09-10T06:00:00Z", "end": "2026-09-17T06:00:00Z" },
+    "activeUsers": 600,
+    "baselineActiveUsers": 500,
+    "definitions": {
+      "activeUsers": "Distinct fictional account-team members who reviewed contacts, prepared an import or recorded a follow-up during the weekly period; this is an authored sample.",
+      "activation": "New eligible team members in the current week who reached first value by preparing a contact workspace with an assigned follow-up; activated members are included in active users.",
+      "retention": "The 400-member cohort selected from baseline-period active users, of whom 300 returned for a qualifying activity in the current period. Sampled value outcomes below are separately authored observations, not inferred from these usage counts."
+    },
+    "activation": { "eligibleUsers": 200, "activatedUsers": 140 },
+    "retention": { "cohortUsers": 400, "returningUsers": 300 },
+    "features": [
+      { "localKey": "sample-contoso-adoption-workspace", "name": "Shared contact workspace", "eligibleUsers": 500, "adoptedUsers": 350, "targetRate": 65 },
+      { "localKey": "sample-contoso-adoption-import", "name": "Contact import preview", "eligibleUsers": 400, "adoptedUsers": 260, "targetRate": 60 },
+      { "localKey": "sample-contoso-adoption-followup", "name": "Scheduled customer follow-ups", "eligibleUsers": 300, "adoptedUsers": 240, "targetRate": 75 }
+    ],
+    "outcomes": [
+      { "localKey": "sample-contoso-value-contact-preparation", "name": "Sampled median contact preparation time", "unit": "minutes", "current": 8, "baseline": 12, "target": 9, "direction": "decrease" },
+      { "localKey": "sample-contoso-value-plan-completion", "name": "Sampled follow-up plan completion", "unit": "percent", "current": 85, "baseline": 80, "target": 85, "direction": "increase" }
+    ]
+  },
+  "support": {
+    "provider": "Zendesk",
+    "sourceUrl": null,
+    "asOf": "2026-09-24T06:00:00Z",
+    "cases": [
+      { "localKey": "sample-contoso-case-import-duplicates", "title": "Duplicate-contact preview hides conflicting values", "theme": "Contact import", "status": "pending", "priority": "high", "escalated": true, "createdAt": "2026-09-18T06:00:00Z", "updatedAt": "2026-09-23T06:00:00Z" },
+      { "localKey": "sample-contoso-case-onboarding-resume", "title": "Resuming onboarding omits the last completed step", "theme": "Onboarding", "status": "open", "priority": "urgent", "escalated": true, "createdAt": "2026-09-20T06:00:00Z", "updatedAt": "2026-09-24T06:00:00Z" },
+      { "localKey": "sample-contoso-case-followup-owner", "title": "Follow-up ownership is unclear after reassignment", "theme": "Follow-ups", "status": "pending", "priority": "normal", "escalated": false, "createdAt": "2026-09-16T06:00:00Z", "updatedAt": "2026-09-22T06:00:00Z" },
+      { "localKey": "sample-contoso-case-import-errors", "title": "Import validation summary obscures the affected row", "theme": "Contact import", "status": "open", "priority": "high", "escalated": false, "createdAt": "2026-09-22T06:00:00Z", "updatedAt": "2026-09-23T06:00:00Z" },
+      { "localKey": "sample-contoso-case-search-filter", "title": "Contact search filter is difficult to clear", "theme": "Search", "status": "open", "priority": "normal", "escalated": false, "createdAt": "2026-09-23T06:00:00Z", "updatedAt": "2026-09-24T05:00:00Z" },
+      { "localKey": "sample-contoso-case-search-label", "title": "Search result label omitted the contact role", "theme": "Search", "status": "resolved", "priority": "normal", "escalated": false, "createdAt": "2026-09-17T06:00:00Z", "updatedAt": "2026-09-20T06:00:00Z" },
+      { "localKey": "sample-contoso-case-checklist-help", "title": "Onboarding checklist help could not be expanded", "theme": "Onboarding", "status": "resolved", "priority": "high", "escalated": true, "createdAt": "2026-09-14T06:00:00Z", "updatedAt": "2026-09-21T06:00:00Z" }
+    ]
+  },
+  "business": {
+    "provider": "Power BI",
+    "sourceUrl": null,
+    "window": { "start": "2026-09-17T06:00:00Z", "end": "2026-09-24T06:00:00Z" },
+    "baselineWindow": { "start": "2026-09-10T06:00:00Z", "end": "2026-09-17T06:00:00Z" },
+    "scopeNote": "Complete authored weekly business sample for fictional Contoso CRM, not a connected report or the entire business. Values are independent observations and do not establish attribution to application behavior.",
+    "metrics": [
+      { "localKey": "sample-contoso-business-revenue", "name": "Weekly booked revenue", "unit": "USD", "current": 168000, "baseline": 160000, "target": 155000, "direction": "increase", "definition": "Authored sum of booked deal values for the fictional account-team sample during the week, not recognized revenue or a claim of CRM attribution." },
+      { "localKey": "sample-contoso-business-leads", "name": "Qualified leads", "unit": "count", "current": 240, "baseline": 200, "target": 230, "direction": "increase", "definition": "Authored count of leads first marked qualified by the sampled Contoso account teams in the week, not active users or contacts imported." },
+      { "localKey": "sample-contoso-business-qualification-time", "name": "Median lead qualification time", "unit": "hours", "current": 18, "baseline": 24, "target": 20, "direction": "decrease", "definition": "Separately authored median elapsed time from first lead assignment to qualification among leads qualified in the weekly Contoso sample." },
+      { "localKey": "sample-contoso-business-handoff-completion", "name": "Qualified lead handoff completion", "unit": "percent", "current": 92, "baseline": 80, "target": 90, "direction": "increase", "definition": "Separately authored percentage of qualified leads in the Contoso weekly sample with an owner, next action and agreed handoff date." }
+    ]
+  }
+}

@@ -1,0 +1,46 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Product Scout</title>
+  <script src="/theme.js"></script>
+  <link rel="stylesheet" href="/styles.css">
+  <script type="module" src="/app.js"></script>
+</head>
+<body>
+  <!-- Shared canvas shell: preserve IDs and accessibility hooks.
+       For datasource changes, follow docs/managing-a-datasource.md at the release root. -->
+  <a class="skip-link" href="#main">Skip to product overview</a>
+  <header class="topbar">
+    <div class="topbar-inner">
+      <a class="brand-row" href="/" id="brand-link" aria-label="Product Scout home">
+        <span class="brand-mark" aria-hidden="true"><svg viewBox="0 0 32 32"><path d="m24 8-5 11-11 5 5-11 11-5Z"/><circle cx="16" cy="16" r="3"/></svg></span>
+        <span class="brand-name">Product Scout</span>
+      </a>
+      <nav class="breadcrumbs" aria-label="Breadcrumb">
+        <ol id="breadcrumb-list" class="breadcrumb-list"></ol>
+      </nav>
+      <div class="topbar-actions">
+        <button id="settings-toggle" class="back-button" aria-expanded="false" aria-controls="canvas-settings">Settings</button>
+      </div>
+    </div>
+  </header>
+  <div class="page">
+    <section id="canvas-settings" class="canvas-settings" aria-labelledby="settings-title" hidden>
+      <h2 id="settings-title">Settings</h2>
+      <div class="portfolio-role">
+        <label for="role-select">Your role</label>
+        <select id="role-select" aria-label="Perspective"></select>
+        <button id="theme-toggle" class="back-button">Switch theme</button>
+      </div>
+      <p class="muted"><span id="connection-label"></span> · <span id="version"></span></p>
+    </section>
+    <div id="error-banner" class="error-banner" role="alert" hidden></div>
+    <p id="context-status" class="context-status" role="status" hidden></p>
+    <!-- app.js renders cards and detail views into #main; do not add static datasource markup here. -->
+    <main id="main" tabindex="-1"><div class="loading">Preparing dashboard...</div></main>
+  </div>
+  <div id="toast" class="toast" role="status" hidden></div>
+</body>
+</html>

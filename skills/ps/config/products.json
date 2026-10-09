@@ -1,0 +1,31 @@
+{
+  "schemaVersion": "1.0",
+  "products": [
+    {
+      "id": "zava-shop",
+      "name": "Zava Shop",
+      "description": "A better checkout, from basket to doorstep.",
+      "release": { "version": "v4.2", "targetDate": "2026-10-01" },
+      "repositories": [],
+      "rules": {
+        "blockingLabels": ["release-blocker"],
+        "attentionLabels": ["needs-decision", "security", "dependency"],
+        "componentPrefix": "component:",
+        "maxAgeHours": 24
+      }
+    },
+    {
+      "id": "contoso-crm",
+      "name": "Contoso CRM",
+      "description": "Make every customer relationship count.",
+      "release": { "version": "v2.8", "targetDate": "2026-10-08" },
+      "repositories": [],
+      "rules": {
+        "blockingLabels": ["release-blocker"],
+        "attentionLabels": ["needs-decision", "security", "dependency"],
+        "componentPrefix": "component:",
+        "maxAgeHours": 24
+      }
+    }
+  ]
+}

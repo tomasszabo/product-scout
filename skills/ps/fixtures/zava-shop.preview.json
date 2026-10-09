@@ -1,0 +1,152 @@
+{
+  "schemaVersion": "1.0",
+  "pipelineVersion": "0.1.0",
+  "productId": "zava-shop",
+  "mode": "fixture",
+  "fetchedAt": "2026-09-24T06:00:00Z",
+  "sourceUrls": { "confluence": null, "applicationInsights": null },
+  "stories": [
+    {
+      "localKey": "sample-zava-checkout-summary",
+      "title": "Review the checkout total before paying",
+      "outcome": "Shoppers can verify delivery charges and the full order total before submitting payment.",
+      "status": "accepted",
+      "acceptance": "defined",
+      "decision": null,
+      "owner": "Checkout product owner"
+    },
+    {
+      "localKey": "sample-zava-guest-tracking",
+      "title": "Track an order without creating an account",
+      "outcome": "Guest shoppers can follow delivery progress using their order confirmation.",
+      "status": "in-progress",
+      "acceptance": "missing",
+      "decision": "Product owner to choose whether guest tracking includes split shipments in this scope.",
+      "owner": "Delivery product owner"
+    },
+    {
+      "localKey": "sample-zava-payment-retry",
+      "title": "Retry a failed payment safely",
+      "outcome": "Shoppers can recover from a payment failure without placing a duplicate order.",
+      "status": "in-progress",
+      "acceptance": "defined",
+      "decision": null,
+      "owner": "Payments product owner"
+    },
+    {
+      "localKey": "sample-zava-express-checkout",
+      "title": "Choose express checkout for a repeat purchase",
+      "outcome": "Returning shoppers can reuse a preferred delivery option while confirming the final total.",
+      "status": "draft",
+      "acceptance": "missing",
+      "decision": "Product owner to decide whether saved payment methods are included or deferred.",
+      "owner": "Checkout product owner"
+    },
+    {
+      "localKey": "sample-zava-order-confirmation",
+      "title": "Receive a clear order confirmation",
+      "outcome": "Shoppers receive a confirmation showing purchased items, delivery details and the total paid.",
+      "status": "accepted",
+      "acceptance": "defined",
+      "decision": null,
+      "owner": "Orders product owner"
+    },
+    {
+      "localKey": "sample-zava-address-correction",
+      "title": "Correct a delivery address during checkout",
+      "outcome": "Shoppers can correct invalid address details without losing their basket.",
+      "status": "in-progress",
+      "acceptance": "defined",
+      "decision": null,
+      "owner": "Checkout product owner"
+    },
+    {
+      "localKey": "sample-zava-payment-explanation",
+      "title": "Understand why a payment was declined",
+      "outcome": "Shoppers receive a useful next step without exposing sensitive payment details.",
+      "status": "draft",
+      "acceptance": "defined",
+      "decision": null,
+      "owner": "Payments product owner"
+    }
+  ],
+  "monitoring": {
+    "window": { "start": "2026-09-23T06:00:00Z", "end": "2026-09-24T06:00:00Z" },
+    "baselineWindow": { "start": "2026-09-22T06:00:00Z", "end": "2026-09-23T06:00:00Z" },
+    "journeys": [
+      { "localKey": "sample-zava-journey-checkout", "name": "Checkout completion", "attempts": 1000, "successes": 920, "affectedUsers": 60, "p95Ms": 2400, "baselineAttempts": 1000, "baselineSuccesses": 970, "baselineP95Ms": 1600, "targetSuccessRate": 98, "targetP95Ms": 2000 },
+      { "localKey": "sample-zava-journey-guest-tracking", "name": "Guest order tracking", "attempts": 500, "successes": 490, "affectedUsers": 8, "p95Ms": 900, "baselineAttempts": 400, "baselineSuccesses": 380, "baselineP95Ms": 1200, "targetSuccessRate": 97, "targetP95Ms": 1500 },
+      { "localKey": "sample-zava-journey-payment", "name": "Payment completion", "attempts": 800, "successes": 760, "affectedUsers": 28, "p95Ms": 1800, "baselineAttempts": 1000, "baselineSuccesses": 980, "baselineP95Ms": 1500, "targetSuccessRate": 99, "targetP95Ms": 1600 },
+      { "localKey": "sample-zava-journey-confirmation", "name": "Order confirmation delivery", "attempts": 200, "successes": 200, "affectedUsers": 0, "p95Ms": 600, "baselineAttempts": 200, "baselineSuccesses": 198, "baselineP95Ms": 800, "targetSuccessRate": 99, "targetP95Ms": 1000 }
+    ]
+  },
+  "appMonitoring": {
+    "availability": { "state": "outage", "environment": "production", "observedAt": "2026-09-24T05:55:00Z", "summary": "Simulated production outage: Zava Shop checkout and payment submission are unavailable in this fictional observation. Window-wide request and log metrics are independent historical samples." },
+    "window": { "start": "2026-09-23T06:00:00Z", "end": "2026-09-24T06:00:00Z" },
+    "baselineWindow": { "start": "2026-09-22T06:00:00Z", "end": "2026-09-23T06:00:00Z" },
+    "requests": { "total": 12000, "failed": 360, "p95Ms": 2200, "baselineTotal": 10000, "baselineFailed": 200, "baselineP95Ms": 1600, "targetP95Ms": 1800 },
+    "operations": [
+      { "localKey": "sample-zava-app-checkout", "name": "Submit checkout", "requests": 4000, "failed": 200, "p95Ms": 2400, "targetP95Ms": 1800 },
+      { "localKey": "sample-zava-app-payment", "name": "Authorize payment", "requests": 3000, "failed": 120, "p95Ms": 1900, "targetP95Ms": 1500 },
+      { "localKey": "sample-zava-app-tracking", "name": "Read delivery status", "requests": 2000, "failed": 20, "p95Ms": 650, "targetP95Ms": 1000 },
+      { "localKey": "sample-zava-app-confirmation", "name": "Render order confirmation", "requests": 1000, "failed": 0, "p95Ms": 450, "targetP95Ms": 700 }
+    ],
+    "logs": [
+      { "localKey": "sample-zava-log-payment-recovery", "timestamp": "2026-09-24T05:40:00Z", "severity": "information", "kind": "trace", "operation": "Authorize payment", "message": "Synthetic retry observation: payment authorization recovered after a transient response.", "occurrences": 55 },
+      { "localKey": "sample-zava-log-checkout-error", "timestamp": "2026-09-24T02:10:00Z", "severity": "error", "kind": "exception", "operation": "Submit checkout", "message": "Synthetic exception observation: checkout validation could not complete.", "occurrences": 70 },
+      { "localKey": "sample-zava-log-tracking-warning", "timestamp": "2026-09-24T05:20:00Z", "severity": "warning", "kind": "dependency", "operation": "Read delivery status", "message": "Synthetic dependency observation: delivery status lookup used a cached response after a timeout.", "occurrences": 30 },
+      { "localKey": "sample-zava-log-payment-error", "timestamp": "2026-09-24T04:00:00Z", "severity": "error", "kind": "dependency", "operation": "Authorize payment", "message": "Synthetic dependency observation: payment authorization returned an unsuccessful response.", "occurrences": 45 },
+      { "localKey": "sample-zava-log-checkout-warning", "timestamp": "2026-09-24T03:40:00Z", "severity": "warning", "kind": "trace", "operation": "Submit checkout", "message": "Synthetic performance observation: checkout processing exceeded the local warning threshold.", "occurrences": 120 },
+      { "localKey": "sample-zava-log-confirmation-recovery", "timestamp": "2026-09-24T05:50:00Z", "severity": "information", "kind": "trace", "operation": "Render order confirmation", "message": "Synthetic recovery observation: confirmation rendering returned to its expected latency range.", "occurrences": 40 }
+    ]
+  },
+  "adoption": {
+    "window": { "start": "2026-09-17T06:00:00Z", "end": "2026-09-24T06:00:00Z" },
+    "baselineWindow": { "start": "2026-09-10T06:00:00Z", "end": "2026-09-17T06:00:00Z" },
+    "activeUsers": 1200,
+    "baselineActiveUsers": 1000,
+    "definitions": {
+      "activeUsers": "Distinct fictional shoppers who browsed a product, saved a basket or placed an order during the weekly period; this is an authored sample.",
+      "activation": "New eligible shoppers in the current week who reached first value by saving a basket with a selected delivery option; activated shoppers are included in active users.",
+      "retention": "The 800-shopper cohort selected from baseline-period active users, of whom 560 returned for a qualifying activity in the current period. Sampled value outcomes below are separately authored observations, not inferred from these usage counts."
+    },
+    "activation": { "eligibleUsers": 300, "activatedUsers": 180 },
+    "retention": { "cohortUsers": 800, "returningUsers": 560 },
+    "features": [
+      { "localKey": "sample-zava-adoption-express", "name": "Express purchase setup", "eligibleUsers": 900, "adoptedUsers": 600, "targetRate": 60 },
+      { "localKey": "sample-zava-adoption-tracking", "name": "Self-service delivery tracking", "eligibleUsers": 1000, "adoptedUsers": 700, "targetRate": 65 },
+      { "localKey": "sample-zava-adoption-baskets", "name": "Saved baskets", "eligibleUsers": 800, "adoptedUsers": 480, "targetRate": 55 }
+    ],
+    "outcomes": [
+      { "localKey": "sample-zava-value-purchase-time", "name": "Sampled median repeat-purchase time", "unit": "minutes", "current": 3, "baseline": 5, "target": 3, "direction": "decrease" },
+      { "localKey": "sample-zava-value-basket-completion", "name": "Sampled basket-to-order completion", "unit": "percent", "current": 78, "baseline": 68, "target": 75, "direction": "increase" }
+    ]
+  },
+  "support": {
+    "provider": "Zendesk",
+    "sourceUrl": null,
+    "asOf": "2026-09-24T06:00:00Z",
+    "cases": [
+      { "localKey": "sample-zava-case-delivery-option", "title": "Delivery option resets while reviewing the basket", "theme": "Checkout", "status": "pending", "priority": "high", "escalated": true, "createdAt": "2026-09-19T06:00:00Z", "updatedAt": "2026-09-23T06:00:00Z" },
+      { "localKey": "sample-zava-case-payment-retry", "title": "Payment retry leaves an unclear order state", "theme": "Payments", "status": "open", "priority": "urgent", "escalated": true, "createdAt": "2026-09-21T06:00:00Z", "updatedAt": "2026-09-24T06:00:00Z" },
+      { "localKey": "sample-zava-case-split-tracking", "title": "Split-shipment tracking omits a parcel", "theme": "Delivery", "status": "pending", "priority": "normal", "escalated": false, "createdAt": "2026-09-17T06:00:00Z", "updatedAt": "2026-09-22T06:00:00Z" },
+      { "localKey": "sample-zava-case-status-wording", "title": "Guest delivery status wording needs clarification", "theme": "Delivery", "status": "open", "priority": "normal", "escalated": false, "createdAt": "2026-09-22T06:00:00Z", "updatedAt": "2026-09-23T06:00:00Z" },
+      { "localKey": "sample-zava-case-decline-guidance", "title": "Declined payment guidance does not explain the next step", "theme": "Payments", "status": "open", "priority": "high", "escalated": false, "createdAt": "2026-09-23T06:00:00Z", "updatedAt": "2026-09-24T05:00:00Z" },
+      { "localKey": "sample-zava-case-return-summary", "title": "Return summary omitted the selected collection date", "theme": "Returns", "status": "resolved", "priority": "normal", "escalated": false, "createdAt": "2026-09-16T06:00:00Z", "updatedAt": "2026-09-20T06:00:00Z" },
+      { "localKey": "sample-zava-case-address-help", "title": "Address correction help was hidden on a narrow screen", "theme": "Checkout", "status": "resolved", "priority": "high", "escalated": true, "createdAt": "2026-09-15T06:00:00Z", "updatedAt": "2026-09-21T06:00:00Z" }
+    ]
+  },
+  "business": {
+    "provider": "Power BI",
+    "sourceUrl": null,
+    "window": { "start": "2026-09-17T06:00:00Z", "end": "2026-09-24T06:00:00Z" },
+    "baselineWindow": { "start": "2026-09-10T06:00:00Z", "end": "2026-09-17T06:00:00Z" },
+    "scopeNote": "Complete authored weekly business sample for fictional Zava Shop, not a connected report or the entire business. Values are independent observations and do not establish attribution to application behavior.",
+    "metrics": [
+      { "localKey": "sample-zava-business-order-value", "name": "Weekly order value", "unit": "USD", "current": 112000, "baseline": 100000, "target": 110000, "direction": "increase", "definition": "Authored sample of submitted Zava order merchandise value during the week, before refunds and excluding delivery charges." },
+      { "localKey": "sample-zava-business-orders", "name": "Weekly submitted orders", "unit": "count", "current": 1200, "baseline": 1000, "target": 1100, "direction": "increase", "definition": "Authored count of distinct submitted Zava orders in the weekly sample, not distinct shoppers or payment requests." },
+      { "localKey": "sample-zava-business-fulfillment-cycle", "name": "Median fulfillment cycle", "unit": "hours", "current": 30, "baseline": 40, "target": 32, "direction": "decrease", "definition": "Separately authored median elapsed time from order submission to dispatch among dispatched orders in the Zava weekly sample." },
+      { "localKey": "sample-zava-business-on-time", "name": "On-time fulfillment", "unit": "percent", "current": 96, "baseline": 80, "target": 95, "direction": "increase", "definition": "Separately authored percentage of sampled Zava dispatched orders meeting their promised dispatch date during the week." }
+    ]
+  }
+}

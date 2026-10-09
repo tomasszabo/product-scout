@@ -1,0 +1,17 @@
+{
+  "schemaVersion": "1.0",
+  "pipelineVersion": "0.1.0",
+  "productId": "zava-shop",
+  "source": "github-issues",
+  "mode": "fixture",
+  "fetchedAt": "2026-09-24T06:00:00.000Z",
+  "coverage": { "status": "complete", "note": "Authored fictional issue snapshot for Zava Shop; no GitHub repository has been queried.", "repositories": ["zava/shop"] },
+  "issues": [
+    { "id": "zava/shop#142", "repository": "zava/shop", "number": 142, "title": "Checkout retries can create duplicate payment requests", "summary": "The payment retry path needs an idempotency decision before the checkout rollout.", "state": "open", "labels": ["release-blocker", "needs-decision", "component:checkout"], "milestone": "v4.2", "url": null, "updatedAt": "2026-09-23T14:20:00.000Z" },
+    { "id": "zava/shop#156", "repository": "zava/shop", "number": 156, "title": "Payment sandbox contract is waiting on provider confirmation", "summary": "The checkout team needs a confirmed provider contract to complete integration validation.", "state": "open", "labels": ["dependency", "component:checkout"], "milestone": "v4.2", "url": null, "updatedAt": "2026-09-23T11:40:00.000Z" },
+    { "id": "zava/shop#161", "repository": "zava/shop", "number": 161, "title": "Review session lifetime for shared checkout devices", "summary": "The security-labeled issue asks for review of checkout session expiry. No security scan result is attached.", "state": "open", "labels": ["security", "component:identity"], "milestone": "v4.2", "url": null, "updatedAt": "2026-09-22T16:10:00.000Z" },
+    { "id": "zava/shop#168", "repository": "zava/shop", "number": 168, "title": "Decide whether guest order tracking stays in this release", "summary": "Scope trade-off: ship order tracking now or prioritize payment resilience.", "state": "open", "labels": ["needs-decision", "component:orders"], "milestone": "v4.2", "url": null, "updatedAt": "2026-09-23T09:00:00.000Z" },
+    { "id": "zava/shop#173", "repository": "zava/shop", "number": 173, "title": "Improve empty basket guidance", "summary": "Content and illustration updates are in progress.", "state": "open", "labels": ["enhancement", "component:storefront"], "milestone": "v4.2", "url": null, "updatedAt": "2026-09-22T10:00:00.000Z" },
+    { "id": "zava/shop#130", "repository": "zava/shop", "number": 130, "title": "Address form now supports international postal codes", "summary": "Issue closed after the validation rules were updated. Closure alone does not establish deployment.", "state": "closed", "labels": ["enhancement", "component:checkout"], "milestone": "v4.2", "url": null, "updatedAt": "2026-09-23T15:00:00.000Z" }
+  ]
+}
